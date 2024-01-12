@@ -11,7 +11,7 @@ public class MyBST {
             left = right = null;
         }
         @Override
-        public String toString() { return"" + this.val; }
+        public String toString() { return "" + this.val; }
     }
 
     public int size() {
@@ -24,6 +24,19 @@ public class MyBST {
         } else {
             return 1 + sizeHelper(countSoFar, currentNode.left) + sizeHelper(countSoFar, currentNode.right);
         }
+    }
+
+    public void insert(Integer n){
+
+        BSTNode insertNode = new BSTNode(n);
+
+        insertHelper(insertNode, root);
+
+
+    }
+
+    private void insertHelper(){
+        
     }
     
 
