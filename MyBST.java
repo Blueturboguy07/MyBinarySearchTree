@@ -28,16 +28,28 @@ public class MyBST {
 
     public void insert(Integer n){
 
-        BSTNode insertNode = new BSTNode(n);
-
-        insertHelper(insertNode, root);
-
+        insertHelper(n, root);
 
     }
 
-    private void insertHelper(){
-        
+    private void insertHelper(int insertNum, BSTNode currentNode) {
+        if (insertNum > currentNode.val) {
+            if (currentNode.right == null) {
+                currentNode.right = new BSTNode(insertNum);
+            } else {
+                insertHelper(insertNum, currentNode.right);
+            }
+        } else if (insertNum < currentNode.val) {
+            if (currentNode.left == null) {
+                currentNode.left = new BSTNode(insertNum);
+            } else {
+                insertHelper(insertNum, currentNode.left);
+            }
+        } else {
+            currentNode.val = insertNum;
+        }
     }
+    
     
 
 }
