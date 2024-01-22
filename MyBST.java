@@ -122,12 +122,12 @@ public class MyBST {
     public void delete(int n) {
         root = deleteHelper(n, root);
     }
-    
+
     private BSTNode deleteHelper(int n, BSTNode currentNode) {
         if (currentNode == null) {
             return null;
         }
-    
+
         if (n < currentNode.val) {
             currentNode.left = deleteHelper(n, currentNode.left);
         } else if (n > currentNode.val) {
@@ -135,29 +135,38 @@ public class MyBST {
         } else {
 
             if (currentNode.left == null) {
-                return currentNode.right; 
+                return currentNode.right;
             } else if (currentNode.right == null) {
-                return currentNode.left; 
+                return currentNode.left;
             }
-    
+
             currentNode.val = findMin(currentNode.right).val;
             currentNode.right = deleteHelper(currentNode.val, currentNode.right);
         }
-    
+
         return currentNode;
     }
-    
+
     private BSTNode findMin(BSTNode node) {
         while (node.left != null) {
             node = node.left;
         }
         return node;
     }
-    
 
-    public void inOrder(){
+    public void inOrder() {
+        inOrderTraversalHelper(root);
+    }
 
+    private void inOrderTraversalHelper(BSTNode currentNode) {
+        if (currentNode != null) {
 
+            inOrderTraversalHelper(currentNode.left);
+
+            System.out.print(currentNode.val + " ");
+
+            inOrderTraversalHelper(currentNode.right);
+        }
     }
 
 }
