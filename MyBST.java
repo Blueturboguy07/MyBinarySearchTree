@@ -169,4 +169,34 @@ public class MyBST {
         }
     }
 
+    public void print() {
+        int treeHeight = calculateHeight(root);
+        printTree(root, treeHeight, 0);
+    }
+
+    private int calculateHeight(BSTNode node) {
+        if (node == null) {
+            return 0;
+        } else {
+            int leftHeight = calculateHeight(node.left);
+            int rightHeight = calculateHeight(node.right);
+            return Math.max(leftHeight, rightHeight) + 1;
+        }
+    }
+
+    private void printTree(BSTNode node, int treeHeight, int depth) {
+        if (node == null) {
+            return;
+        }
+
+        printTree(node.right, treeHeight, depth + 1);
+
+        for (int i = 0; i < depth * 4; i++) {
+            System.out.print(" ");
+        }
+        System.out.println(node.val);
+
+        printTree(node.left, treeHeight, depth + 1);
+    }
+
 }
