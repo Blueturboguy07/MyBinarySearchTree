@@ -119,4 +119,45 @@ public class MyBST {
         }
     }
 
+    public void delete(int n) {
+        root = deleteHelper(n, root);
+    }
+    
+    private BSTNode deleteHelper(int n, BSTNode currentNode) {
+        if (currentNode == null) {
+            return null;
+        }
+    
+        if (n < currentNode.val) {
+            currentNode.left = deleteHelper(n, currentNode.left);
+        } else if (n > currentNode.val) {
+            currentNode.right = deleteHelper(n, currentNode.right);
+        } else {
+
+            if (currentNode.left == null) {
+                return currentNode.right; 
+            } else if (currentNode.right == null) {
+                return currentNode.left; 
+            }
+    
+            currentNode.val = findMin(currentNode.right).val;
+            currentNode.right = deleteHelper(currentNode.val, currentNode.right);
+        }
+    
+        return currentNode;
+    }
+    
+    private BSTNode findMin(BSTNode node) {
+        while (node.left != null) {
+            node = node.left;
+        }
+        return node;
+    }
+    
+
+    public void inOrder(){
+
+
+    }
+
 }
