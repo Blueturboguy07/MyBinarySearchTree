@@ -72,4 +72,51 @@ public class MyBST {
             return true;
         }
     }
+
+    public int getMax() {
+
+        return getMaxHelper(root, Integer.MIN_VALUE);
+    }
+
+    private int getMaxHelper(BSTNode currentNode, int currentMax) {
+
+        if (currentNode == null) {
+
+            return currentMax;
+        }
+
+        if (currentNode.val > currentMax) {
+
+            return getMaxHelper(currentNode.right, currentNode.val);
+
+        } else {
+
+            return currentMax;
+
+        }
+    }
+
+    public int getMin() {
+
+        return getMinHelper(root, Integer.MAX_VALUE);
+    }
+
+    private int getMinHelper(BSTNode currentNode, int currentMin) {
+
+        if (currentNode == null) {
+
+            return currentMin;
+        }
+
+        if (currentNode.val < currentMin) {
+
+            return getMinHelper(currentNode.left, currentNode.val);
+
+        } else {
+
+            return currentMin;
+
+        }
+    }
+
 }
