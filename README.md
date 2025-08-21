@@ -78,7 +78,3 @@ bst.inOrder(); // Output: 1 3 8 10
 ## Contribution
 
 Feel free to contribute to the improvement of this BST implementation. Fork the repository, make your changes, and submit a pull request.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
